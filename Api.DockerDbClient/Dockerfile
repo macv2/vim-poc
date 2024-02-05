@@ -7,10 +7,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Api.DockerDbClient/Api.DockerDbClient.csproj", "Api.DockerDbClient/"]
+COPY ["Api.DockerDbClient.csproj", "Api.DockerDbClient/"]
 RUN dotnet restore "Api.DockerDbClient/Api.DockerDbClient.csproj"
-COPY . .
 WORKDIR "/src/Api.DockerDbClient"
+COPY . .
 RUN dotnet build "Api.DockerDbClient.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
