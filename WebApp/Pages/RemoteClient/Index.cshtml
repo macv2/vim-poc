@@ -1,0 +1,47 @@
+﻿@page
+@model WebApp.Pages.RemoteClient.IndexModel
+@{
+}
+
+<h1>RemoteAPI - Pokémon</h1>
+
+<div class="m-4">
+    <div class="row">
+        <div class="col">
+            <form method="get">
+                <div class="mb-2">
+                    <label class="m-1">Número de pokémon</label>
+                    <input asp-for="Limit" />
+                </div>
+                <div class="mb-2">
+                    <button type="submit" asp-page-handler="GetPokemonList" class="btn btn-primary">Mostrar Pokémon</button>
+                </div>
+            </form>
+            @if (Model.PokemonList is not null)
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Número</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Imagen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.PokemonList)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td>
+                                    <img src="@item.ImageUrl" style="transform:scale(0.35)"/>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</div>
+
