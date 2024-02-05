@@ -1,0 +1,16 @@
+﻿services:
+  api-dockerdbclient:
+    build: Api.DockerDbClient
+    container_name: api-dockerdbclient
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: docker_db
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Password12345
+    ports:
+      - '1433:1433'
