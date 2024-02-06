@@ -7,10 +7,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Api.LocalDbClient/Api.LocalDbClient.csproj", "Api.LocalDbClient/"]
+COPY ["Api.LocalDbClient.csproj", "Api.LocalDbClient/"]
 RUN dotnet restore "Api.LocalDbClient/Api.LocalDbClient.csproj"
-COPY . .
 WORKDIR "/src/Api.LocalDbClient"
+COPY . .
 RUN dotnet build "Api.LocalDbClient.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

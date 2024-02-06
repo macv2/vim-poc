@@ -7,10 +7,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Api.RemoteClient/Api.RemoteClient.csproj", "Api.RemoteClient/"]
+COPY ["Api.RemoteClient.csproj", "Api.RemoteClient/"]
 RUN dotnet restore "Api.RemoteClient/Api.RemoteClient.csproj"
-COPY . .
 WORKDIR "/src/Api.RemoteClient"
+COPY . .
 RUN dotnet build "Api.RemoteClient.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish

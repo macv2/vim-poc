@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity.Data;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Net.Http;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
 
 namespace WebApp.Client;
 
+// TODO: Parametro configuration is unread
 public class ApiClient(IHttpClientFactory httpClientFactory, IConfiguration configuration)
 {
     public async Task<TResponse> Get<TResponse>(string url) where TResponse : ResponseBase, new()

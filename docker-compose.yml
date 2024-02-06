@@ -1,4 +1,11 @@
 ﻿services:
+  webapp:
+    build: WebApp
+    container_name: webapp
+    ports:
+      - 8081:8080
+    depends_on:
+      - api-dockerdbclient
   api-dockerdbclient:
     build: Api.DockerDbClient
     container_name: api-dockerdbclient

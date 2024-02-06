@@ -1,0 +1,35 @@
+﻿@page
+@model WebApp.Pages.DockerDbClient.IndexModel
+@{
+}
+
+<h1>Consulta Api - Docker Database Client</h1>
+
+<div class="m-4">
+    <div class="row">
+        <div class="col">
+            @if (Model.OrderCollection is not null)
+            {
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Total $</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.OrderCollection)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.CustomerName</td>
+                                <td>@item.Total</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</div>
