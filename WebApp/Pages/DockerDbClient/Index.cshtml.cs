@@ -1,10 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Configuration;
-using static WebApp.Pages.RemoteClient.IndexModel;
-using System.Collections.Generic;
-using System.Net.Http;
-using WebApp.Client;
 using System.Text.Json;
 
 namespace WebApp.Pages.DockerDbClient;
@@ -16,8 +11,8 @@ public class IndexModel : PageModel
     private readonly ILogger<IndexModel> _logger;
 
     public IndexModel(
-        IHttpClientFactory httpClientFactory, 
-        IConfiguration configuration, 
+        IHttpClientFactory httpClientFactory,
+        IConfiguration configuration,
         ILogger<IndexModel> logger)
     {
         _httpClientFactory = httpClientFactory;
@@ -58,3 +53,4 @@ public class IndexModel : PageModel
         public string? Description { get; set; }
         public decimal Total { get; set; }
     }
+}
