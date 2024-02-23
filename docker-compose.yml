@@ -6,6 +6,7 @@
       - 8081:8080
     depends_on:
       - api-dockerdbclient
+      - api-remoteclient
   api-dockerdbclient:
     build: Api.DockerDbClient
     container_name: api-dockerdbclient
@@ -13,6 +14,11 @@
       - 8080:8080
     depends_on:
       - db
+  api-remoteclient:
+    build: Api.RemoteClient
+    container_name: api-remoteclient
+    ports:
+      - 8090:8080
   db:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: docker_db
